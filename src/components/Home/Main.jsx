@@ -1,12 +1,12 @@
 import { Route, Switch } from 'wouter'
-import Test from './MainTabs'
+import MainTabs from './MainTabs'
 import LoginForm from '../Header/LoginForm'
 import Dashboard from '../Dashboard/Dashboard'
 
 export default function Main () {
   return (
     <main className='h-full w-full'>
-      <Route path='/' component={Test}/>
+      <Route path='/' component={MainTabs}/>
       <Route path='/login' component={LoginForm}/>
       <Switch>
       <Route path='/dashboard' component={Dashboard}/>

@@ -10,6 +10,7 @@ export default function Component () {
         className='w-full h-[650px]'
         loading="lazy"
         aria-hidden="false"
+        aria-label="Mapa Universidad"
         tabIndex="0" />
       </Tabs.Item>
       <Tabs.Item title="Información" icon={HiDocumentText}>

@@ -16,7 +16,7 @@ export default function Header () {
     <Navbar fluid={true} className="bg-gray-200 dark:bg-[#212528]">
       <Navbar.Brand as={Link} href="/">
         <img
-          src="/public/poliformat-logo.png"
+          src="/poliformat-logo.png"
           className="h-5 sm:h-8 hover:scale-105 transition"
           alt="Logo poliformat"
         />

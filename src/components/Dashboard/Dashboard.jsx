@@ -6,6 +6,8 @@ import { Navbar } from 'flowbite-react'
 import { useSubject } from '../../hooks/useSubject'
 import Badge from './Badge'
 import Subject from './Subject/Subject'
+import SchoolBadge from './SchoolBadge'
+import SchoolSite from './SchoolSite'
 
 export default function Dashboard () {
   const [subjects, setSubjects] = useState([])
@@ -34,17 +36,18 @@ export default function Dashboard () {
   }, [location])
 
   return (
-    <div className='h-full'>
-      <Navbar fluid className="bg-gray-200 dark:bg-[#212528] h-[8%] pb-1 border-b-[1px] border-b-black">
+    <div className='h-full w-full'>
+      <Navbar fluid className="bg-gray-200 dark:bg-[#212528] h-[9%] pb-1 border-b-[1px] border-b-black">
         <div className="flex gap-2">
+           {user.role !== 'student' ? <SchoolBadge /> : null}
           {subjects?.map((subject) => (
             <Badge key={subject.id} subject={subject} selectedId={id}/>
           ))}
         </div>
       </Navbar>
-      <main className='h-[92%]'>
+      <main className='h-[91%] w-full'>
       {
-        id !== undefined && <Subject subject={subject}/>
+        id !== undefined ? <Subject subject={subject}/> : user.role !== 'student' ? <SchoolSite /> : null
       }
       </main>
     </div>

@@ -45,6 +45,7 @@ export default function Form () {
             id='dni'
             name='dni'
             type="text"
+            placeholder='Use su número de identificación sin letra.'
             required
           />
         </div>
