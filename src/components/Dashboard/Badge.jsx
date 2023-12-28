@@ -14,9 +14,9 @@ export default function Badge ({ subject, selectedId }) {
       <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}`)}>
         Inicio
       </Dropdown.Item>
-      <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/tasks`)}>Tareas</Dropdown.Item>
+      {/* <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/tasks`)}>Tareas</Dropdown.Item> */}
       <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/news`)}>Noticias</Dropdown.Item>
-      <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/resources`)}>Recursos</Dropdown.Item>
+      {/* <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/resources`)}>Recursos</Dropdown.Item> */}
       <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/grades`)}>Notas</Dropdown.Item>
     </Dropdown>
   )

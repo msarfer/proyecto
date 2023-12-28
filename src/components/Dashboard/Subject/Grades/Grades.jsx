@@ -37,8 +37,16 @@ export default function Grades () {
     if (JSON.stringify(subject) === '{}') return
     let result = subject.grades
     if (user.role === 'student') result = subject.grades.filter(grade => grade.student === user.dni)
-    console.log(result)
-    setGrades(result)
+
+    const getGrades = async () => {
+      const fetchedGrades = await Promise.all(result.map(async (grade) => {
+        const user = await fetch(`http://localhost:8080/users/${grade.student}`).then(res => res.status === 200 ? res.json() : undefined)
+        return { ...grade, student: `${user.name} ${user.surname}` }
+      }))
+      setGrades(fetchedGrades)
+    }
+
+    getGrades()
   }, [subject])
 
   return (

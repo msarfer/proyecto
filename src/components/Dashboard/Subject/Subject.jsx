@@ -5,7 +5,6 @@ import Sections from './Sections'
 
 export default function Subject ({ subject }) {
   const { id } = subject
-
   // Check if student or lecturer are in the subject with useEffect
 
   return (

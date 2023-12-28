@@ -23,9 +23,9 @@ export default function Sections ({ id }) {
         >
           Inicio
         </ListGroup.Item>
-        <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/tasks`)} icon={HiOutlineAdjustments}>Tareas</ListGroup.Item>
+        {/* <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/tasks`)} icon={HiOutlineAdjustments}>Tareas</ListGroup.Item> */}
         <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/news`)} icon={HiInbox}>Noticias</ListGroup.Item>
-        <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/resources`)} icon={HiCloudDownload}>Recursos</ListGroup.Item>
+        {/* <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/resources`)} icon={HiCloudDownload}>Recursos</ListGroup.Item> */}
         <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/grades`)} icon={HiCloudDownload}>Notas</ListGroup.Item>
         {user.role === 'manager' && <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/grades`)} icon={HiTrash}>Eliminar</ListGroup.Item>}
       </ListGroup>
