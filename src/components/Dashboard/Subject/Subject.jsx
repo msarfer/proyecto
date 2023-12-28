@@ -2,6 +2,7 @@ import { Route } from 'wouter'
 import Grades from './Grades/Grades'
 import News from './News/News'
 import Sections from './Sections'
+import RemoveSubject from './RemoveSubject'
 
 export default function Subject ({ subject }) {
   const { id } = subject
@@ -14,6 +15,7 @@ export default function Subject ({ subject }) {
         <Route path="/dashboard/:id" component={() => <h1>Inicio</h1>} />
         <Route path="/dashboard/:id/news" component={News} />
         <Route path="/dashboard/:id/grades" component={Grades} />
+        <Route path="/dashboard/:id/remove" component={RemoveSubject} />
       </div>
     </section>
   )

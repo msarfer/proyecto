@@ -11,10 +11,9 @@ export default function Main () {
       <Switch>
       <Route path='/dashboard' component={Dashboard}/>
       <Route path='/dashboard/:id' component={Dashboard}/>
-      <Route path='/dashboard/:id/tasks' component={Dashboard}/>
       <Route path='/dashboard/:id/news' component={Dashboard}/>
-      <Route path='/dashboard/:id/resources' component={Dashboard}/>
       <Route path='/dashboard/:id/grades' component={Dashboard}/>
+      <Route path='/dashboard/:id/remove' component={Dashboard}/>
       </Switch>
     </main>
   )

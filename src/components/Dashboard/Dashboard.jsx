@@ -17,37 +17,38 @@ export default function Dashboard () {
   const { subject } = useSubject(id)
 
   const user = useStateStore((state) => state.user)
-  const setUser = useStateStore((state) => state.setUser)
 
   useEffect(() => {
     if (!user) setLocation('/login')
 
-    fetch('http://localhost:8080/subjects')
-      .then((res) => res.json())
-      .then((data) => {
-        const _subjects = data.filter(subject => {
-          if (user.role === 'student') return subject.members.includes(user.dni)
-          else if (user.role === 'lecturer') return subject.head === user.dni
+    const getSubjects = async () => {
+      const response = await fetch('http://localhost:8080/subjects')
+      const data = await response.json()
+      const filterSubjects = data.filter(subject => {
+        if (subject.id === 'site') return false
+        else if (user.role === 'student') return subject.members.includes(user.dni)
+        else if (user.role === 'lecturer') return subject.head === user.dni
 
-          return true
-        })
-        setSubjects(_subjects)
+        return true
       })
+      setSubjects(filterSubjects)
+    }
+    getSubjects()
   }, [location])
 
   return (
     <div className='h-full w-full'>
       <Navbar fluid className="bg-gray-200 dark:bg-[#212528] h-[9%] pb-1 border-b-[1px] border-b-black">
         <div className="flex gap-2">
-           {user.role !== 'student' ? <SchoolBadge /> : null}
-          {subjects?.map((subject) => (
-            <Badge key={subject.id} subject={subject} selectedId={id}/>
-          ))}
+          <SchoolBadge />
+          {subjects?.map((subject) => {
+            return subject.id !== 'site' ? <Badge key={subject.id} subject={subject} selectedId={id}/> : null
+          })}
         </div>
       </Navbar>
       <main className='h-[91%] w-full'>
       {
-        id !== undefined ? <Subject subject={subject}/> : user.role !== 'student' ? <SchoolSite /> : null
+        id !== undefined ? <Subject subject={subject}/> : <SchoolSite />
       }
       </main>
     </div>

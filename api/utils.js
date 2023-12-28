@@ -143,7 +143,7 @@ export function storeSubjects (subjects) {
 }
 
 export function deleteSubject (id) {
-  const data = deleteSubject()
+  const data = getSubjects()
   const subjects = data.filter(s => s.id !== id)
 
   storeSubjects(subjects)

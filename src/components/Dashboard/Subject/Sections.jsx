@@ -2,9 +2,8 @@ import { ListGroup } from 'flowbite-react'
 import {
   HiCloudDownload,
   HiInbox,
-  HiOutlineAdjustments,
-  HiUserCircle,
-  HiTrash
+  HiTrash,
+  HiUserCircle
 } from 'react-icons/hi'
 import { useLocation } from 'wouter'
 import { useStateStore } from '../../../store'
@@ -27,7 +26,10 @@ export default function Sections ({ id }) {
         <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/news`)} icon={HiInbox}>Noticias</ListGroup.Item>
         {/* <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/resources`)} icon={HiCloudDownload}>Recursos</ListGroup.Item> */}
         <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/grades`)} icon={HiCloudDownload}>Notas</ListGroup.Item>
-        {user.role === 'manager' && <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/grades`)} icon={HiTrash}>Eliminar</ListGroup.Item>}
+        {
+          user.role === 'manager' &&
+          <ListGroup.Item icon={HiTrash} onClick={() => setLocation(`/dashboard/${id}/remove`)}>Eliminar</ListGroup.Item>
+        }
       </ListGroup>
     </div>
   )

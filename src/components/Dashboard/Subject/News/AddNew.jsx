@@ -16,7 +16,7 @@ export default function AddNew ({ subjectId, onCreate }) {
       id: crypto.randomUUID(),
       title,
       content,
-      author: `${user.name} ${user.surname}`,
+      author: user.dni,
       created: date
     }
 

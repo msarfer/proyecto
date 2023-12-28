@@ -26,9 +26,9 @@ router.post('/', function (req, res) {
 
 router.delete('/:id', function (req, res) {
   const { id } = req.params
-  console.log('delete subject' + id)
+  console.log('delete subject ' + id)
   deleteSubject(id)
-  res.status(204).send('Deleted')
+  return res.status(204).send('Deleted')
 })
 
 router.post('/:id/news', function (req, res) {
