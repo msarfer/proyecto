@@ -8,7 +8,7 @@ export default function Subject ({ subject }) {
   return (
     <section className="flex h-full bg-transparent">
       <Sections id={id}/>
-      <div className='overflow-y-auto w-full p-1'>
+      <div className='overflow-auto w-full p-1'>
         <Route path="/dashboard/:id" component={() => <h1>Inicio</h1>} />
         <Route path="/dashboard/:id/tasks" component={Tasks} />
         <Route path="/dashboard/:id/news" component={News} />

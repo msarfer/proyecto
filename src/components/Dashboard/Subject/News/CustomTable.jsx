@@ -26,7 +26,7 @@ const customTheme = {
 }
 export default function CustomTable ({ data }) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-auto">
       <Table theme={customTheme}>
         <Table.Head>
           <Table.HeadCell>Título</Table.HeadCell>

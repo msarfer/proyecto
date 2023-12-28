@@ -61,11 +61,11 @@ export function getUserByDNI (dni) {
   return users.find(u => u.dni === dni)
 }
 
-export function addUser (user) {
+export function addUser (us) {
   const users = getResources()
-  const idx = users.find(u => u.dni === user.dni)
+  const user = users.find(u => u.dni === us.dni)
 
-  if (idx === -1) {
+  if (user) {
     users.push(user)
     storeUsers(users)
     return user
@@ -91,14 +91,29 @@ export function getSubjectById (id) {
   return subjects.find(subject => subject.id === id)
 }
 
-export function addSubject (subject) {
+export function addSubject (sub) {
   const subjects = getSubjects()
-  const idx = subjects.find(s => s.id === subject.id)
+  const subject = subjects.find(s => s.id === sub.id)
 
-  if (idx === -1) {
+  if (!subject) {
     subjects.push(subject)
     storeSubjects(subjects)
     return subject
+  }
+  return null
+}
+
+export function addNews (id, news) {
+  const subjects = getSubjects()
+  const subject = subjects.find(s => s.id === id)
+
+  if (subject !== undefined) {
+    const subIdx = subjects.findIndex(s => s.id === id)
+    const subNews = subject.news
+    subNews.push(news)
+    subjects[subIdx].news = subNews
+    storeSubjects(subjects)
+    return news
   }
   return null
 }
