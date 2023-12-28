@@ -1,5 +1,5 @@
 import express from 'express'
-import { addSubject, deleteSubject, getSubjects, getSubjectById, addNews } from '../utils.js'
+import { addSubject, deleteSubject, getSubjects, getSubjectById, addNews, addGrade } from '../utils.js'
 
 export const router = express.Router()
 
@@ -38,6 +38,16 @@ router.post('/:id/news', function (req, res) {
   const result = addNews(id, news)
   console.log(result)
   if (!result) res.status(400).send({ cause: 'News already exists with this ID' })
+  else res.send(news)
+})
+
+router.post('/:id/grades', function (req, res) {
+  const { id } = req.params
+  const news = req.body
+  console.log('add grade ' + JSON.stringify(news))
+  const result = addGrade(id, news)
+  console.log(result)
+  if (!result) res.status(400).send({ cause: 'Grade already exists with this ID' })
   else res.send(news)
 })
 

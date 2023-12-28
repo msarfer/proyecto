@@ -1,7 +1,6 @@
-import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react'
+import { Button, Label, Modal, TextInput } from 'flowbite-react'
 import { useState } from 'react'
 import { useStateStore } from '../../../../store'
-import { useLocation } from 'wouter'
 
 export default function AddNew ({ subjectId, onCreate }) {
   const [openModal, setOpenModal] = useState(false)

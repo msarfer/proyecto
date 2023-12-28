@@ -118,6 +118,25 @@ export function addNews (id, news) {
   return null
 }
 
+export function addGrade (id, grade) {
+  const subjects = getSubjects()
+  const subject = subjects.find(s => s.id === id)
+
+  if (subject !== undefined) {
+    const subIdx = subjects.findIndex(s => s.id === id)
+    const subGrades = subject.grades
+    const aux = subGrades.find(g => g.student === grade.student && g.title && grade.title)
+    if (!aux) {
+      subGrades.push(grade)
+      subjects[subIdx].grades = subGrades
+      storeSubjects(subjects)
+      return grade
+    }
+    return null
+  }
+  return null
+}
+
 export function storeSubjects (subjects) {
   const str = JSON.stringify(subjects)
   fs.writeFileSync(SUBJECTS_PATH, str)
