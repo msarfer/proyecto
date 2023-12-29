@@ -1,11 +1,11 @@
-import { Link, useParams } from 'wouter'
+import { Breadcrumb } from 'flowbite-react'
+import { useEffect, useState } from 'react'
+import { HiHome } from 'react-icons/hi'
+import { Link } from 'wouter'
 import { useSubject } from '../../hooks/useSubject'
 import { useStateStore } from '../../store'
-import { Breadcrumb } from 'flowbite-react'
 import AddNew from './Subject/News/AddNew'
 import CustomTable from './Subject/News/CustomTable'
-import { HiHome } from 'react-icons/hi'
-import { useEffect, useState } from 'react'
 
 const customTheme = {
   root: {

@@ -1,5 +1,5 @@
 import express from 'express'
-import { addSubject, deleteSubject, getSubjects, getSubjectById, addNews, addGrade } from '../utils.js'
+import { addSubject, deleteSubject, getSubjects, getSubjectById, addNews, addGrade, joinMember } from '../utils.js'
 
 export const router = express.Router()
 
@@ -29,6 +29,16 @@ router.delete('/:id', function (req, res) {
   console.log('delete subject ' + id)
   deleteSubject(id)
   return res.status(204).send('Deleted')
+})
+
+router.post('/:id/members', function (req, res) {
+  const { id } = req.params
+  const { dni } = req.body
+  console.log('join member ' + dni)
+  const result = joinMember(id, dni)
+
+  if (!result) res.status(400).send({ cause: 'This user already exists in this subject' })
+  else res.send(result)
 })
 
 router.post('/:id/news', function (req, res) {

@@ -118,6 +118,24 @@ export function addNews (id, news) {
   return null
 }
 
+export function joinMember (id, dni) {
+  const subjects = getSubjects()
+  const subject = subjects.find(s => s.id === id)
+
+  if (subject !== undefined) {
+    const members = subject.members
+    if (!members.includes(dni)) {
+      const subIdx = subjects.findIndex(s => s.id === id)
+      members.push(dni)
+      subjects[subIdx].members = members
+      storeSubjects(subjects)
+      return dni
+    }
+    return null
+  }
+  return null
+}
+
 export function addGrade (id, grade) {
   const subjects = getSubjects()
   const subject = subjects.find(s => s.id === id)

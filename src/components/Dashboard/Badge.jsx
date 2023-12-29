@@ -1,8 +1,10 @@
 import { Dropdown } from 'flowbite-react'
 import { useLocation } from 'wouter'
+import { useStateStore } from '../../store'
 
 export default function Badge ({ subject, selectedId }) {
   const [location, setLocation] = useLocation()
+  const user = useStateStore((state) => state.user)
 
   const { name, id } = subject
   return (
@@ -18,6 +20,7 @@ export default function Badge ({ subject, selectedId }) {
       <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/news`)}>Noticias</Dropdown.Item>
       {/* <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/resources`)}>Recursos</Dropdown.Item> */}
       <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/grades`)}>Notas</Dropdown.Item>
+      { user.role === 'manager' && <Dropdown.Item onClick={() => setLocation(`/dashboard/${id}/members`)}>Members</Dropdown.Item>}
     </Dropdown>
   )
 }

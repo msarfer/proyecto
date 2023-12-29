@@ -14,6 +14,7 @@ export default function Main () {
       <Route path='/dashboard/:id/news' component={Dashboard}/>
       <Route path='/dashboard/:id/grades' component={Dashboard}/>
       <Route path='/dashboard/:id/remove' component={Dashboard}/>
+      <Route path='/dashboard/:id/members' component={Dashboard}/>
       </Switch>
     </main>
   )
