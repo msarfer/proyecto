@@ -1,9 +1,11 @@
 import { ListGroup } from 'flowbite-react'
 import {
-  HiCloudDownload,
   HiInbox,
   HiTrash,
-  HiUserCircle
+  HiUserCircle,
+  HiUsers,
+  HiAcademicCap,
+  HiNewspaper
 } from 'react-icons/hi'
 import { useLocation } from 'wouter'
 import { useStateStore } from '../../../store'
@@ -23,10 +25,10 @@ export default function Sections ({ id }) {
           Inicio
         </ListGroup.Item>
         {/* <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/tasks`)} icon={HiOutlineAdjustments}>Tareas</ListGroup.Item> */}
-        <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/news`)} icon={HiInbox}>Noticias</ListGroup.Item>
+        <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/news`)} icon={HiNewspaper}>Noticias</ListGroup.Item>
         {/* <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/resources`)} icon={HiCloudDownload}>Recursos</ListGroup.Item> */}
-        <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/grades`)} icon={HiCloudDownload}>Notas</ListGroup.Item>
-        {user.role === 'manager' && <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/members`)} icon={HiCloudDownload}>Members</ListGroup.Item>}
+        <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/grades`)} icon={HiAcademicCap}>Notas</ListGroup.Item>
+        {user.role === 'manager' && <ListGroup.Item onClick={() => setLocation(`/dashboard/${id}/members`)} icon={HiUsers}>Miembros</ListGroup.Item>}
         {user.role === 'manager' && <ListGroup.Item icon={HiTrash} onClick={() => setLocation(`/dashboard/${id}/remove`)}>Eliminar</ListGroup.Item>}
       </ListGroup>
     </div>

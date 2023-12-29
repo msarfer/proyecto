@@ -5,6 +5,7 @@ import { useStateStore } from '../../../../store'
 import { Breadcrumb } from 'flowbite-react'
 import { HiHome } from 'react-icons/hi'
 import AddNew from './AddNew'
+import { useEffect, useState } from 'react'
 
 const customTheme = {
   root: {
@@ -25,7 +26,23 @@ const customTheme = {
 export default function News () {
   const { id } = useParams()
   const { subject } = useSubject(id)
+  const [news, setNews] = useState([])
+
   const user = useStateStore((state) => state.user)
+
+  useEffect(() => {
+    if (JSON.stringify(subject) === '{}') return
+
+    const getNews = async () => {
+      const fetchedNews = await Promise.all(subject.news.map(async (news) => {
+        const user = await fetch(`http://localhost:8080/users/${news.author}`).then(res => res.status === 200 ? res.json() : undefined)
+        return { ...news, author: `${user.name} ${user.surname}` }
+      }))
+      setNews(fetchedNews)
+    }
+
+    getNews()
+  }, [subject])
 
   const reloadPage = () => {
     window.location.reload(false)
@@ -44,7 +61,7 @@ export default function News () {
         </Breadcrumb>
         {user.role !== 'student' && <AddNew subjectId={id} onCreate={() => reloadPage()}/>}
       </section>
-      {subject.news && <CustomTable data={subject.news} />}
+      {news.length > 0 && <CustomTable data={news} />}
     </>
   )
 }

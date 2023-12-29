@@ -94,9 +94,8 @@ export function getSubjectById (id) {
 export function addSubject (sub) {
   const subjects = getSubjects()
   const subject = subjects.find(s => s.id === sub.id)
-
-  if (!subject) {
-    subjects.push(subject)
+  if (subject === undefined) {
+    subjects.push(sub)
     storeSubjects(subjects)
     return subject
   }

@@ -9,9 +9,6 @@ export default function StudentCard ({ data }) {
       <p className="font-normal text-gray-700 dark:text-gray-400">
         {data.dni}
       </p>
-      <p className="font-normal text-gray-700 dark:text-gray-400">
-        {data.dni}
-      </p>
     </Card>
   )
 }

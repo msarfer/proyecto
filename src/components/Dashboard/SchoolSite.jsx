@@ -6,6 +6,7 @@ import { useSubject } from '../../hooks/useSubject'
 import { useStateStore } from '../../store'
 import AddNew from './Subject/News/AddNew'
 import CustomTable from './Subject/News/CustomTable'
+import AddSubject from './AddSubject'
 
 const customTheme = {
   root: {
@@ -47,8 +48,8 @@ export default function SchoolSite () {
   }
 
   return (
-    <>
-      <section className='flex justify-between mb-2 gap-4 items-end'>
+    <section className='p-1'>
+      <header className='flex justify-between mb-2 gap-4 items-end'>
         <Breadcrumb
           aria-label="Breadcrumb par"
           className="bg-gray-200 px-5 py-3 dark:bg-gray-800 flex-1 border-none"
@@ -57,9 +58,12 @@ export default function SchoolSite () {
             <Breadcrumb.Item icon={HiHome}><Link href={'/dashboard/site'} className='hover:text-black dark:hover:text-white'>{subject.name}</Link></Breadcrumb.Item>
             <Breadcrumb.Item>Noticias</Breadcrumb.Item>
         </Breadcrumb>
+        {user.role === 'manager' && <AddSubject onCreate={() => reloadPage()}/>}
         {user.role === 'manager' && <AddNew subjectId={'site'} onCreate={() => reloadPage()}/>}
-      </section>
-      {news.length > 0 && <CustomTable data={news} />}
-    </>
+      </header>
+      <body>
+        {news.length > 0 && <CustomTable data={news} />}
+      </body>
+    </section>
   )
 }

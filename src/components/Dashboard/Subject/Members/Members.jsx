@@ -61,10 +61,12 @@ export default function Members () {
             <Breadcrumb.Item>Miembros</Breadcrumb.Item>
         </Breadcrumb>
         {user.role === 'manager' && <AddNew subjectId={id} onCreate={() => reloadPage()} members={members}/>}
-      </section>
-      <section className='flex gap-1 flex-wrap'>
-      {members?.map(member => (<StudentCard key={member.id} data={member}/>))}
-      </section>
+    </section>
+    <section className='flex gap-1 flex-wrap'>
+    {members?.map(member => {
+      return <StudentCard key={member.id} data={member}/>
+    })}
+    </section>
     </>
   )
 }
