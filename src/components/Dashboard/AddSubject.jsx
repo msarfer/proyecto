@@ -4,7 +4,6 @@ import { useStateStore } from '../../store'
 
 export default function AddSubject ({ onCreate }) {
   const [openModal, setOpenModal] = useState(false)
-  const user = useStateStore((state) => state.user)
   const [lecturers, setLecturers] = useState([])
   useEffect(() => {
     const getLecturer = async () => {

@@ -62,13 +62,13 @@ export function getUserByDNI (dni) {
 }
 
 export function addUser (us) {
-  const users = getResources()
+  const users = getUsers()
   const user = users.find(u => u.dni === us.dni)
 
-  if (user) {
-    users.push(user)
+  if (!user) {
+    users.push(us)
     storeUsers(users)
-    return user
+    return us
   }
   return null
 }

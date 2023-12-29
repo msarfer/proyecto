@@ -7,6 +7,7 @@ import { useStateStore } from '../../store'
 import AddNew from './Subject/News/AddNew'
 import CustomTable from './Subject/News/CustomTable'
 import AddSubject from './AddSubject'
+import AddUser from './AddUser'
 
 const customTheme = {
   root: {
@@ -55,10 +56,10 @@ export default function SchoolSite () {
           className="bg-gray-200 px-5 py-3 dark:bg-gray-800 flex-1 border-none"
           theme={customTheme}
         >
-            <Breadcrumb.Item icon={HiHome}><Link href={'/dashboard/site'} className='hover:text-black dark:hover:text-white'>{subject.name}</Link></Breadcrumb.Item>
-            <Breadcrumb.Item>Noticias</Breadcrumb.Item>
+            <Breadcrumb.Item icon={HiHome}><Link href={'/dashboard'} className='hover:text-black dark:hover:text-white'>{subject.name}</Link></Breadcrumb.Item>
         </Breadcrumb>
         {user.role === 'manager' && <AddSubject onCreate={() => reloadPage()}/>}
+        {user.role === 'manager' && <AddUser onCreate={() => reloadPage()}/>}
         {user.role === 'manager' && <AddNew subjectId={'site'} onCreate={() => reloadPage()}/>}
       </header>
       <body>
