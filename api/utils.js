@@ -141,15 +141,23 @@ export function addGrade (id, grade) {
 
   if (subject !== undefined) {
     const subIdx = subjects.findIndex(s => s.id === id)
-    const subGrades = subject.grades
-    const aux = subGrades.find(g => g.student === grade.student && g.title && grade.title)
-    if (!aux) {
-      subGrades.push(grade)
-      subjects[subIdx].grades = subGrades
-      storeSubjects(subjects)
-      return grade
+    let grades = subject.grades
+
+    const oldGrade = grades.find(g => g.student === grade.student && g.title === grade.title)
+
+    let newGrade = {}
+    if (oldGrade) {
+      newGrade = { ...oldGrade, id: grade.id, grade: grade.grade }
+      grades = grades.filter(grade => grade.id !== oldGrade.id)
+    } else {
+      newGrade = grade
     }
-    return null
+
+    grades.push(newGrade)
+    subjects[subIdx].grades = grades
+    console.log(grades)
+    storeSubjects(subjects)
+    return newGrade
   }
   return null
 }

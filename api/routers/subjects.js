@@ -56,7 +56,7 @@ router.post('/:id/grades', function (req, res) {
   const news = req.body
   console.log('add grade ' + JSON.stringify(news))
   const result = addGrade(id, news)
-  console.log(result)
+
   if (!result) res.status(400).send({ cause: 'Grade already exists with this ID' })
   else res.send(news)
 })
