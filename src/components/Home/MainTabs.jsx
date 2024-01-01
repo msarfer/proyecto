@@ -1,5 +1,6 @@
-import { Tabs } from 'flowbite-react'
+import { Tabs, List } from 'flowbite-react'
 import { HiDocumentText, HiLibrary, HiHome } from 'react-icons/hi'
+import Info from './Info'
 
 export default function Component () {
   return (
@@ -14,9 +15,7 @@ export default function Component () {
         tabIndex="0" />
       </Tabs.Item>
       <Tabs.Item title="Información" icon={HiDocumentText}>
-        This is <span className="font-medium text-gray-800 dark:text-white">Dashboard tab&apos;s associated content</span>.
-        Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
-        control the content visibility and styling.
+        <Info />
       </Tabs.Item>
       <Tabs.Item title="Contacto" icon={HiLibrary}>
         This is <span className="font-medium text-gray-800 dark:text-white">Settings tab&apos;s associated content</span>.

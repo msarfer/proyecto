@@ -5,7 +5,7 @@ import Dashboard from '../Dashboard/Dashboard'
 
 export default function Main () {
   return (
-    <main className='h-full w-full'>
+    <main className='h-full w-full overflow-y-auto'>
       <Route path='/' component={MainTabs}/>
       <Route path='/login' component={LoginForm}/>
       <Switch>
