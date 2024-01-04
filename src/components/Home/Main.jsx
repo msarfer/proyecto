@@ -10,6 +10,7 @@ export default function Main () {
       <Route path='/login' component={LoginForm}/>
       <Switch>
       <Route path='/dashboard' component={Dashboard}/>
+      <Route path='/dashboard/lecturers' component={Dashboard}/>
       <Route path='/dashboard/:id' component={Dashboard}/>
       <Route path='/dashboard/:id/news' component={Dashboard}/>
       <Route path='/dashboard/:id/grades' component={Dashboard}/>

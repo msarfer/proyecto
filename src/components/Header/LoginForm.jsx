@@ -12,9 +12,9 @@ export default function Form () {
 
   useEffect(() => {
     if (user) setLocation('/dashboard')
-  }, [])
+  }, [user])
 
-  const getColor = (r) => role === r ? 'red' : 'disable'
+  const getColor = (r) => role === r ? 'red' : 'gray'
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
@@ -56,11 +56,11 @@ export default function Form () {
           <TextInput id='password' type="password" name='password' required />
         </div>
         <Button.Group className="w-full">
-          <Button className='w-full border' color={getColor('student')} onClick={() => setRole('student')}>Estudiante</Button>
-          <Button className='w-full border' color={getColor('lecturer')} onClick={() => setRole('lecturer')}>Profesor</Button>
-          <Button className='w-full border' color={getColor('manager')} onClick={() => setRole('manager')}>Gestor</Button>
+          <Button className='w-full border dark:text-white' color={getColor('student')} onClick={() => setRole('student')}>Estudiante</Button>
+          <Button className='w-full border dark:text-white' color={getColor('lecturer')} onClick={() => setRole('lecturer')}>Profesor</Button>
+          <Button className='w-full border dark:text-white' color={getColor('manager')} onClick={() => setRole('manager')}>Gestor</Button>
         </Button.Group>
-        <Button type="submit" >Entrar</Button>
+        <Button type="submit" color='red'>Entrar</Button>
       </form>
     </div>
   )

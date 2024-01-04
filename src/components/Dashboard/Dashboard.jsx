@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'wouter'
+import { useLocation, useParams, useRoute } from 'wouter'
 import { useStateStore } from '../../store'
 
-import { Navbar } from 'flowbite-react'
+import { Button, Navbar } from 'flowbite-react'
 import { useSubject } from '../../hooks/useSubject'
 import Badge from './Badge'
 import Subject from './Subject/Subject'
 import SchoolBadge from './SchoolBadge'
 import SchoolSite from './SchoolSite'
+import Lecturers from './Lecturers'
 
 export default function Dashboard () {
   const [subjects, setSubjects] = useState([])
   const [location, setLocation] = useLocation()
+  const [match, params] = useRoute('/dashboard/lecturers')
 
   const { id } = useParams()
   const { subject } = useSubject(id)
@@ -38,17 +40,23 @@ export default function Dashboard () {
 
   return (
     <div className='h-full w-full'>
-      <Navbar fluid className="bg-gray-200 dark:bg-[#212528] h-[9%] pb-1 border-b-[1px] border-b-black">
+      <Navbar fluid className="bg-gray-200 dark:bg-[#212528] h-[9%] pb-1 border-b-[1px]">
         <div className="flex gap-2">
           <SchoolBadge />
           {subjects?.map((subject) => {
             return subject.id !== 'site' ? <Badge key={subject.id} subject={subject} selectedId={id}/> : null
           })}
         </div>
+        {
+          user.role === 'lecturer' &&
+          <Button color={match ? 'red' : 'gray'} onClick={() => setLocation('/dashboard/lecturers')} size='xs'>
+            <span className='dark:text-white'>Profesorado</span>
+          </Button>
+        }
       </Navbar>
       <main className='h-[91%] w-full'>
       {
-        id !== undefined ? <Subject subject={subject}/> : <SchoolSite />
+        (match && user.role === 'lecturer') ? <Lecturers subjects={subjects} /> : id !== undefined ? <Subject subject={subject}/> : <SchoolSite />
       }
       </main>
     </div>

@@ -1,5 +1,6 @@
-import { Tabs, List } from 'flowbite-react'
-import { HiDocumentText, HiLibrary, HiHome } from 'react-icons/hi'
+import { Badge, List, ListGroup, Tabs } from 'flowbite-react'
+import { FaInstagram, FaXTwitter, FaPhone } from 'react-icons/fa6'
+import { HiDocumentText, HiHome, HiUserCircle, HiCheck, HiClock } from 'react-icons/hi'
 import Info from './Info'
 
 export default function Component () {
@@ -17,10 +18,21 @@ export default function Component () {
       <Tabs.Item title="Información" icon={HiDocumentText}>
         <Info />
       </Tabs.Item>
-      <Tabs.Item title="Contacto" icon={HiLibrary}>
-        This is <span className="font-medium text-gray-800 dark:text-white">Settings tab&apos;s associated content</span>.
-        Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
-        control the content visibility and styling.
+      <Tabs.Item title="Contacto" icon={HiUserCircle}>
+        <main className='px-2'>
+          <h2 className='text-3xl mb-2'>Normativa</h2>
+          <ListGroup className='mb-4'>
+            <ListGroup.Item icon={HiDocumentText} href='http://www.upv.es/entidades/SG/infoweb/sg/info/U0643262.pdf' target='_blank' rel="noreferrer"> Reglamento EPSA</ListGroup.Item>
+            <ListGroup.Item icon={HiDocumentText} href="http://www.upv.es/entidades/SG/infoweb/sg/info/U0587806.pdf" target='_blank' rel="noreferrer">Reglamento Ing. Informática</ListGroup.Item>
+            <ListGroup.Item icon={HiDocumentText} href="http://www.upv.es/entidades/SG/infoweb/sg/info/U0589883.pdf" target='_blank' rel="noreferrer">Reglamento Ing. Mecánica</ListGroup.Item>
+          </ListGroup>
+          <h2 className='text-3xl mb-2'>Redes Sociales</h2>
+          <section className='flex flex-wrap gap-3'>
+          <Badge color='pink' icon={FaInstagram} className='hover:scale-105' size='sm'><a href='https://www.instagram.com/upvcampusalcoy/' target='_blank' rel="noreferrer">upvcampusalcoy</a></Badge>
+          <Badge color='blue' icon={FaXTwitter} className='hover:scale-105' size='sm'><a href='https://twitter.com/UPVCampusAlcoy' target='_blank' rel="noreferrer">UPVCampusAlcoy</a></Badge>
+          <Badge color='yellow' icon={FaPhone} className='hover:scale-105' size='sm'>+34 123456789</Badge>
+          </section>
+        </main>
       </Tabs.Item>
     </Tabs>
   )
