@@ -43,9 +43,9 @@ export default function CustomTable ({ data }) {
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 {d.title}
               </Table.Cell>
-              <Table.Cell>{d.grade}</Table.Cell>
-              { user.role !== 'student' && <Table.Cell>{d.student}</Table.Cell>}
-              <Table.Cell>{(new Date(Number(d.created))).toLocaleString('es')}</Table.Cell>
+              <Table.Cell className='text-gray-800 dark:text-gray-300'>{d.grade}</Table.Cell>
+              { user.role !== 'student' && <Table.Cell className='text-gray-800 dark:text-gray-300'>{d.student}</Table.Cell>}
+              <Table.Cell className='text-gray-800 dark:text-gray-300'>{(new Date(Number(d.created))).toLocaleString('es')}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

@@ -56,7 +56,7 @@ export default function SchoolSite () {
           className="bg-gray-200 px-5 py-3 dark:bg-gray-800 flex-1 border-none"
           theme={customTheme}
         >
-            <Breadcrumb.Item icon={HiHome}><Link href={'/dashboard'} className='hover:text-black dark:hover:text-white'>{subject.name}</Link></Breadcrumb.Item>
+            <Breadcrumb.Item icon={HiHome}><Link href={'/dashboard'} className='text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'>{subject.name}</Link></Breadcrumb.Item>
         </Breadcrumb>
         {user.role === 'manager' && <AddSubject onCreate={() => reloadPage()}/>}
         {user.role === 'manager' && <AddUser onCreate={() => reloadPage()}/>}

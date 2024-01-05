@@ -52,13 +52,12 @@ export default function Grades () {
   return (
     <>
       <section className='flex justify-between mb-2 gap-4 items-end'>
-        <Breadcrumb
+      <Breadcrumb
           aria-label="Breadcrumb par"
-          className="bg-gray-200 px-5 py-3 dark:bg-gray-800 flex-1 border-none"
-          theme={customTheme}
+          className="text-gray-800 dark:text-gray-200 bg-gray-200 px-5 py-3 dark:bg-gray-800 flex-1 border-none"
         >
-            <Breadcrumb.Item icon={HiHome}><Link href={`/dashboard/${id}`} className='hover:text-black dark:hover:text-white'>{subject.name}</Link></Breadcrumb.Item>
-            <Breadcrumb.Item>Notas</Breadcrumb.Item>
+            <Breadcrumb.Item icon={HiHome}><Link href={`/dashboard/${id}`} className='text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white'>{subject.name}</Link></Breadcrumb.Item>
+            <Breadcrumb.Item><span className='text-gray-700 dark:text-gray-200'>Notas</span></Breadcrumb.Item>
         </Breadcrumb>
         {user.role !== 'student' && <AddNew subjectId={id} onCreate={() => reloadPage()}/>}
       </section>

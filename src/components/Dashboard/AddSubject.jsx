@@ -1,6 +1,5 @@
 import { Button, Label, Modal, TextInput } from 'flowbite-react'
 import { useEffect, useState } from 'react'
-import { useStateStore } from '../../store'
 
 export default function AddSubject ({ onCreate }) {
   const [openModal, setOpenModal] = useState(false)
@@ -46,10 +45,9 @@ export default function AddSubject ({ onCreate }) {
     <>
       <Button color='red' size='xs' className='rounded-none py-2 pt-3 border-none' onClick={() => setOpenModal(true)}>Añadir asignatura</Button>
       <Modal show={openModal} size="md" onClose={() => setOpenModal(false)} popup>
-        <Modal.Header />
+        <Modal.Header className='mx-4 mt-2'>Añadir Asignatura</Modal.Header>
         <Modal.Body>
           <form className="space-y-6" onSubmit={handleSubmit}>
-            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Añadir Asignatura</h3>
             <div>
               <div className="mb-2 block">
                 <Label htmlFor="name" value="Nombre de la asignatura" />

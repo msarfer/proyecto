@@ -13,7 +13,7 @@ const customTheme = {
     }
   },
   head: {
-    base: 'group/head text-xs uppercase text-gray-700 dark:text-gray-400',
+    base: 'group/head text-xs uppercase text-gray-700 dark:text-gray-100',
     cell: {
       base: 'bg-gray-50 dark:bg-gray-700 px-6 py-3'
     }
@@ -40,9 +40,9 @@ export default function CustomTable ({ data }) {
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 {d.title}
               </Table.Cell>
-              <Table.Cell>{d.content}</Table.Cell>
-              <Table.Cell>{d.author}</Table.Cell>
-              <Table.Cell>{(new Date(Number(d.created))).toLocaleString('es')}</Table.Cell>
+              <Table.Cell className='text-gray-800 dark:text-gray-300'>{d.content}</Table.Cell>
+              <Table.Cell className='text-gray-800 dark:text-gray-300'>{d.author}</Table.Cell>
+              <Table.Cell className='text-gray-800 dark:text-gray-300'>{(new Date(Number(d.created))).toLocaleString('es')}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

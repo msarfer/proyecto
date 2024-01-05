@@ -45,12 +45,11 @@ export default function AddUser ({ onCreate }) {
 
   return (
     <>
-      <Button color='red' size='xs' className='rounded-none py-2 pt-3 border-none' onClick={() => setOpenModal(true)}>Añadir Usuario</Button>
+      <Button color='red' size='xs' className='rounded-none py-2 pt-3 border-none' onClick={() => setOpenModal(true)}>Añadir usuario</Button>
       <Modal show={openModal} size="md" onClose={handleClose} popup>
-        <Modal.Header />
+        <Modal.Header className='mx-4 mt-2'>Añadir Usuario</Modal.Header>
         <Modal.Body>
           <form className="space-y-6" onSubmit={handleSubmit}>
-            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Añadir Usuario</h3>
             <div>
               <div className="mb-2 block">
                 <Label htmlFor="name" value="Nombre" />
@@ -71,7 +70,7 @@ export default function AddUser ({ onCreate }) {
             </div>
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="passwrod" value="Contraseña" />
+                <Label htmlFor="password" value="Contraseña" />
               </div>
               <TextInput id="password" name='password' required/>
             </div>
