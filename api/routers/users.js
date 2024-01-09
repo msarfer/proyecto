@@ -19,7 +19,6 @@ router.get('/:dni', function (req, res) {
 router.post('/', function (req, res) {
   const user = req.body
   const result = addUser(user)
-  console.log(user, result)
   if (!result) res.status(400).send({ cause: 'User already exists with this DNI' })
   else res.send(user)
 })

@@ -5,7 +5,6 @@ export const useSubject = (id) => {
 
   useEffect(() => {
     if (id) {
-      console.log('new subject')
       fetch(`http://localhost:8080/subjects/${id}`)
         .then((res) => res.json())
         .then((data) => setSubject(data))

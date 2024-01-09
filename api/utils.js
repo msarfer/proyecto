@@ -112,7 +112,6 @@ export function addGrade (id, grade) {
 
     grades.push(newGrade)
     subjects[subIdx].grades = grades
-    console.log(grades)
     storeSubjects(subjects)
     return newGrade
   }

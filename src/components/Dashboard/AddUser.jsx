@@ -9,7 +9,7 @@ export default function AddUser ({ onCreate }) {
     evt.preventDefault()
     const form = evt.target
     const { name, surname, dni, password, role } = Object.fromEntries(new FormData(form))
-    if (dni.length < 8) {
+    if (dni.length !== 8) {
       setDniColor('bg-red-500')
       return
     }
@@ -64,7 +64,7 @@ export default function AddUser ({ onCreate }) {
             </div>
             <div>
               <div className={`mb-2 block py-1 ${dniColor}`}>
-                <Label htmlFor="dni" value={!dniColor ? 'DNI' : 'DNI (El dni tiene que ser único y poseer 9 cifras)'}/>
+                <Label htmlFor="dni" value={!dniColor ? 'DNI' : 'DNI (El dni tiene que ser único y poseer 8 cifras)'}/>
               </div>
               <TextInput id="dni" name='dni' required/>
             </div>

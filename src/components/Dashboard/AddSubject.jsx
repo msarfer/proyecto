@@ -28,7 +28,6 @@ export default function AddSubject ({ onCreate }) {
       grades: [],
       resources: []
     }
-    console.log(subject)
 
     await fetch('http://localhost:8080/subjects', {
       method: 'POST',

@@ -24,12 +24,10 @@ export default function Form () {
     const fetchUser = await fetch(`http://localhost:8080/users/${dni}`)
       .then(res => res.status === 200 ? res.json() : undefined)
 
-    if (!fetchUser || fetchUser.password !== password || fetchUser.role !== role) alert('Credenciales erroneas')
+    if (!fetchUser || fetchUser.password !== password || fetchUser.role !== role) alert('No se ha encontrado un usuario con la información proporcionada')
     else {
-      // Setear el estado con el usuario
       delete fetchUser.password
       setUser(fetchUser)
-      // Redirigir al dashboard
       setLocation('/dashboard')
     }
   }
